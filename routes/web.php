@@ -23,6 +23,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
          Route::get('/cart/history','cart_history')->name('admin.cart.history');
          Route::get('/order/history','order_history')->name('admin.order.history');
           });
+
                Route::controller(categorycontroller::class)->group(function () {
                Route::get('/category/create','category_create')->name('admin.category.create');
                Route::get('/category/manage','category_manage')->name('admin.category.manage');
@@ -41,10 +42,12 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
                 Route::get('/discount/manage','manage')->name('admin.discount.manage');
 
             });
-   
-      });
-      
-   
+            Route::controller(subcategorycontroller::class)->group(function () {
+                Route::get('/subcategory/create','create')->name('admin.subcategory.create');
+                Route::get('/subcategory/manage','manage')->name('admin.subcategory.manage');
+            });
+        });
+   });
 
 
 

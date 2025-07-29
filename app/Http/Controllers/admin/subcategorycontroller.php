@@ -7,5 +7,13 @@ use Illuminate\Http\Request;
 
 class subcategorycontroller extends Controller
 {
-    //
+    public function create()
+    {
+        return view('admin.subcategory.create');
+    }
+
+    public function manage()
+    {
+        return view('admin.subcategory.manage');
+    }
 }
