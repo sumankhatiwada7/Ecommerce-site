@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+    <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+
+    <title>@yield('seller-page-title', 'Seller Dashboard') | Ecommerce Seller</title>
+
+    <link href="{{ asset('adminassets/css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="{{ route('vendor') }}">
+                    <span class="align-middle">Ecommerce Seller</span>
+                </a>
+
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        Main
+                    </li>
+
+                    <li class="sidebar-item {{ request()->routeIs('vendor') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('vendor') }}">
+                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Seller Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">
+                        Products
+                    </li>
+                    <li class="sidebar-item {{ request()->routeIs('seller.product.create') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('seller.product.create') }}">
+                            <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50">
+                                <path d="M25,2C12.317,2,2,12.317,2,25s10.317,23,23,23s23-10.317,23-23S37.683,2,25,2z M37,26H26v11h-2V26H13v-2h11V13h2v11h11V26z"></path>
+                            </svg>
+                            <span class="align-middle">Add Product</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item {{ request()->routeIs('seller.product.manage') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('seller.product.manage') }}">
+                            <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                            </svg>
+                            <span class="align-middle">Manage Products</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">
+                        Store
+                    </li>
+                    <li class="sidebar-item {{ request()->routeIs('seller.store.create') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('seller.store.create') }}">
+                            <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50">
+                                <path d="M25,2C12.317,2,2,12.317,2,25s10.317,23,23,23s23-10.317,23-23S37.683,2,25,2z M37,26H26v11h-2V26H13v-2h11V13h2v11h11V26z"></path>
+                            </svg>
+                            <span class="align-middle">Create Store</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item {{ request()->routeIs('seller.store.manage') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('seller.store.manage') }}">
+                            <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                            </svg>
+                            <span class="align-middle">Manage Store</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">
+                        Orders
+                    </li>
+                    <li class="sidebar-item {{ request()->routeIs('vendor.order.history') ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('vendor.order.history') }}">
+                            <svg class="align-middle" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
+                            <span class="align-middle">Order History</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav navbar-align">
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a>
+
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                                <img src="{{ asset('adminassets/img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded me-1" alt="Seller User" /> <span class="text-dark">Seller User</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item"><i class="align-middle me-1" data-feather="log-out"></i> Log out</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="content">
+                <div class="container-fluid p-0">
+
+                    <h1 class="h3 mb-3">@yield('seller-page-title', 'Seller Dashboard')</h1>
+
+                    @yield('seller_layout')
+
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <strong>Ecommerce Seller Panel</strong> &copy; {{ date('Y') }}
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="#">Settings</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="#">Help</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="{{ asset('adminassets/js/app.js') }}"></script>
+
+</body>
+
+</html>
