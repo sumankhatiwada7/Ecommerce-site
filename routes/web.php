@@ -71,7 +71,22 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function ()
     
           });
 
+
         
+        });
+   });
+Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
+    Route::prefix('vendor')->group(function () {
+     Route::controller(sellermaincontroller::class)->group(function () {
+
+        Route::get('/dashboard','index')->name('dashboard');
+        Route::get('/order/history','orderhistory')->name('vendor.order.history');
+        Route::get('/affiliate','affiliate')->name('vendor.affiliate');
+        Route::get('/payment','payment')->name('vendor.payment');
+        
+
+          });
+         
         });
    });
 
@@ -80,9 +95,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function ()
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'rolemanager:user'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
