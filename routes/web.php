@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\categorycontroller;
 use App\Http\Controllers\admin\admincontroller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\admin\productcontroller;
 use App\Http\Controllers\admin\productattributescontroller;
 use App\Http\Controllers\admin\discountcontroller;
@@ -11,11 +12,32 @@ use App\Http\Controllers\seller\sellermaincontroller;
 use App\Http\Controllers\seller\sellerproductcontroller;
 use App\Http\Controllers\seller\sellerstorecontroller;
 use App\Http\Controllers\seller\sellerordercontroller;
-
+use App\Http\Controllers\customer\customermaincontroller;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Main dashboard route with role-based redirection
+Route::get('/dashboard', function () {
+    $user = Auth::user();
+    
+    if (!$user) {
+        return redirect()->route('login');
+    }
+    
+    switch ($user->role) {
+        case 0: // Admin
+            return redirect()->route('admin');
+        case 1: // Vendor
+            return redirect()->route('vendor');  
+        case 2: // Customer
+            return redirect()->route('customer.dashboard');
+        default:
+            return redirect('/');
+    }
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 //admin route
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
@@ -44,7 +66,6 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::controller(discountcontroller::class)->group(function () {
                 Route::get('/discount/create','create')->name('admin.discount.create');
                 Route::get('/discount/manage','manage')->name('admin.discount.manage');
-
             });
             Route::controller(subcategorycontroller::class)->group(function () {
                 Route::get('/subcategory/create','create')->name('admin.subcategory.create');
@@ -52,50 +73,37 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             });
         });
    });
+
    //seller route
 Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function () {
     Route::prefix('vendor')->group(function () {
      Route::controller(sellermaincontroller::class)->group(function () {
         Route::get('/dashboard','index')->name('vendor');
         Route::get('/order/history','orderhistory')->name('vendor.order.history');
-    
           });
            Route::controller(sellerproductcontroller::class)->group(function () {
              Route::get('/product/create','create')->name('seller.product.create');
              Route::get('/product/manage','manage')->name('seller.product.manage');
-
           });
            Route::controller(sellerstorecontroller::class)->group(function () {
                 Route::get('/store/create','create')->name('seller.store.create');
                 Route::get('/store/manage','manage')->name('seller.store.manage');
-    
           });
-
-
-        
         });
    });
+
+   //customer route
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
-    Route::prefix('vendor')->group(function () {
-     Route::controller(sellermaincontroller::class)->group(function () {
-
-        Route::get('/dashboard','index')->name('dashboard');
-        Route::get('/order/history','orderhistory')->name('vendor.order.history');
-        Route::get('/affiliate','affiliate')->name('vendor.affiliate');
-        Route::get('/payment','payment')->name('vendor.payment');
-        
-
+    Route::prefix('customer')->group(function () {
+     Route::controller(customermaincontroller::class)->group(function () {
+        Route::get('/dashboard','index')->name('customer.dashboard');
+        Route::get('/order-history','order_history')->name('customer.order.history');
+        Route::get('/affiliate','affiliate')->name('customer.affiliate');
+        Route::get('/payment','payment')->name('customer.payment');
+        Route::get('/profile','profile')->name('customer.profile');
           });
-         
         });
    });
-
-
-
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -18,5 +18,9 @@ class customermaincontroller extends Controller
   }
   public function payment(){
     return view('customer.payment');
+    
+  }
+  public function profile(){
+    return view('customer.profile');
   }
 }

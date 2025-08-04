@@ -44,7 +44,7 @@ class rolemanager
             case 1:
                 return redirect()->route('vendor');
             case 2:
-                return redirect()->route('dashboard');
+                return redirect()->route('customer.dashboard');
             default:
                 return redirect()->route('dashboard');
         }
