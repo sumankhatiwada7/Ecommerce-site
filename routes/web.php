@@ -13,6 +13,7 @@ use App\Http\Controllers\seller\sellerproductcontroller;
 use App\Http\Controllers\seller\sellerstorecontroller;
 use App\Http\Controllers\seller\sellerordercontroller;
 use App\Http\Controllers\customer\customermaincontroller;
+use App\Http\Controllers\maincatgorycontroller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -70,6 +71,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::controller(subcategorycontroller::class)->group(function () {
                 Route::get('/subcategory/create','create')->name('admin.subcategory.create');
                 Route::get('/subcategory/manage','manage')->name('admin.subcategory.manage');
+            });
+             Route::controller(maincatgorycontroller::class)->group(function () {
+                Route::get('/category/create','create')->name('admin.maincategory.create');
+                Route::get('/category/manage','manage')->name('admin.maincategory.manage');
+
             });
         });
    });

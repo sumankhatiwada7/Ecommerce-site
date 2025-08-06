@@ -6,7 +6,7 @@ orderhistory - Customer Panel
 
 @section('customer_layout')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Order History') }}
+        {{ __('OrderHistory') }}
     </h2>
 
 @endsection
