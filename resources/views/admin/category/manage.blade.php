@@ -27,6 +27,10 @@ Manage Categories - Admin Panel
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->category_name }}</td>
                         <td>
+                             <!-- Edit Button -->
+                            <a href="{{ route('admin.maincategory.edit', $category->id) }}" class="btn btn-primary">Edit</a>
+
+
                          <a href="#" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
