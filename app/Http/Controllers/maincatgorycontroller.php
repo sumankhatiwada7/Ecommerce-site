@@ -18,5 +18,9 @@ class maincatgorycontroller extends Controller
 
         return back()->with('success', 'Category created successfully!');
     }
+    public function edit($id){
+        $category_info=Category::find($id);
+        return view('admin.category.edit', compact('category_info'));
+    }
 }
 

@@ -74,7 +74,8 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             });
              Route::controller(maincatgorycontroller::class)->group(function () {
                 Route::post('/category/create','create')->name('admin.maincategory.create');
-                
+                 Route::get('/category/{id}','edit')->name('admin.maincategory.edit');
+
 
             });
         });
