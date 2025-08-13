@@ -72,12 +72,13 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
                 Route::get('/subcategory/create','create')->name('admin.subcategory.create');
                 Route::get('/subcategory/manage','manage')->name('admin.subcategory.manage');
             });
-             Route::controller(maincatgorycontroller::class)->group(function () {
-                Route::post('/category/create','create')->name('admin.maincategory.create');
-                 Route::get('/category/{id}','edit')->name('admin.maincategory.edit');
+            Route::controller(maincatgorycontroller::class)->group(function () {
+    Route::post('/category', 'store')->name('admin.maincategory.create'); // create/save
+    Route::get('/category/{id}/edit', 'edit')->name('admin.maincategory.edit'); // show edit form
+    Route::put('/category/{id}', 'update')->name('admin.maincategory.update');
+    Route::delete('/category/{id}', 'delete')->name('admin.maincategory.delete'); // delete category
+});
 
-
-            });
         });
    });
 
