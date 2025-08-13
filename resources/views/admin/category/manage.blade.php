@@ -5,9 +5,9 @@ Manage Categories - Admin Panel
 @endsection
 
 @section('admin_layout')
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __(' Manage categories') }}
-    </h2>
+<h2 class="font-semibold text-xl text-gray-800 leading-tight">
+    {{ __(' Manage categories') }}
+</h2>
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Categories</h3>
@@ -23,20 +23,20 @@ Manage Categories - Admin Panel
             </thead>
             <tbody>
                 @foreach($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->category_name }}</td>
-                        <td>
-                             <!-- Edit Button -->
-                            <a href="{{ route('admin.maincategory.edit', $category->id) }}" class="btn btn-primary">Edit</a>
-
-                         <form action="{{ route('admin.maincategory.delete', $category->id) }}" method="POST" style="display:inline;">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->category_name }}</td>
+                    <td>
+                        <!-- Edit Button -->
+                        <a href="{{ route('admin.maincategory.edit', $category->id) }}" class="btn btn-primary">Edit</a>
+                        <!-- Delete Button -->
+                        <form action="{{ route('admin.maincategory.delete', $category->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

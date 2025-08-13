@@ -14,6 +14,7 @@ use App\Http\Controllers\seller\sellerstorecontroller;
 use App\Http\Controllers\seller\sellerordercontroller;
 use App\Http\Controllers\customer\customermaincontroller;
 use App\Http\Controllers\maincatgorycontroller;
+use App\Http\Controllers\mainsubcategories;
 
 Route::get('/', function () {
     return view('welcome');
@@ -73,11 +74,16 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
                 Route::get('/subcategory/manage','manage')->name('admin.subcategory.manage');
             });
             Route::controller(maincatgorycontroller::class)->group(function () {
-    Route::post('/category', 'store')->name('admin.maincategory.create'); // create/save
-    Route::get('/category/{id}/edit', 'edit')->name('admin.maincategory.edit'); // show edit form
-    Route::put('/category/{id}', 'update')->name('admin.maincategory.update');
-    Route::delete('/category/{id}', 'delete')->name('admin.maincategory.delete'); // delete category
+            Route::post('/category', 'store')->name('admin.maincategory.create'); // create/save
+            Route::get('/category/{id}/edit', 'edit')->name('admin.maincategory.edit'); // show edit form
+            Route::put('/category/{id}', 'update')->name('admin.maincategory.update');
+            Route::delete('/category/{id}', 'delete')->name('admin.maincategory.delete'); // delete category
 });
+  Route::controller(mainsubcategories::class)->group(function () {
+            Route::post('/subcategory', 'store')->name('admin.mainsubcategory.store'); // create/save
+          
+});
+
 
         });
    });
