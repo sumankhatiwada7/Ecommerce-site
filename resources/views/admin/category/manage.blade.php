@@ -30,8 +30,11 @@ Manage Categories - Admin Panel
                              <!-- Edit Button -->
                             <a href="{{ route('admin.maincategory.edit', $category->id) }}" class="btn btn-primary">Edit</a>
 
-
-                         <a href="#" class="btn btn-danger">Delete</a>
+                         <form action="{{ route('admin.maincategory.delete', $category->id) }}" method="POST" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
                         </td>
                     </tr>
                 @endforeach

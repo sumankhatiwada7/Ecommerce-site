@@ -22,13 +22,14 @@ Edit category - Admin Panel
             </ul>
         </div>
         @endif
-        @if(session('success'))
+        @if(session('message'))
         <div class="alert alert-success">
-            {{ session('success') }}
+            {{ session('message') }}
         </div>
         @endif
-        <form action="{{ route('admin.maincategory.edit', $category_info->id) }}" method="POST">
+        <form action="{{ route('admin.maincategory.update', $category_info->id) }}" method="POST">
             @csrf
+            @method('PUT')
             <label for="category_name" class="fw-bold mb-3">Give Category Name</label>
             <input type="text" class="form-control mb-3" name="category_name" value="{{ $category_info->category_name }}" placeholder="Input">
             <button class="btn btn-primary">Update Category</button>
