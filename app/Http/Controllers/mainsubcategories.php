@@ -9,7 +9,7 @@ class mainsubcategories extends Controller
 {
     public function store(Request $request){
         $validated_data=$request->validate([
-            'subcategory' => 'required|string|max:255',
+            'subcategory' => 'required|string|unique:subcategories|max:255',
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -17,6 +17,8 @@ class mainsubcategories extends Controller
     
         subcatrgory::create($validated_data);
 
-        return redirect()->route('admin.mainsubcategory.store')->with('success', 'Subcategory created successfully.');
+        return redirect()->route('admin.subcategory.create')->with('success', 'Subcategory created successfully.');
     }
+   
+ 
 }

@@ -80,8 +80,13 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::delete('/category/{id}', 'delete')->name('admin.maincategory.delete'); // delete category
 });
   Route::controller(mainsubcategories::class)->group(function () {
-            Route::post('/subcategory', 'store')->name('admin.mainsubcategory.store'); // create/save
-          
+            Route::post('/subcategory', 'store')->name('admin.mainsubcategory.store');
+           
+
+            
+           
+
+
 });
 
 
