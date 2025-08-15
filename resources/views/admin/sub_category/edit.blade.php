@@ -27,11 +27,11 @@ Edit category - Admin Panel
             {{ session('message') }}
         </div>
         @endif
-        <form action="{{ route('admin.subcategory.update', $subcategory_info->id) }}" method="POST">
+        <form action="{{ route('admin.mainsubcategory.update', $subcategory_info->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <label for="subcategory_name" class="fw-bold mb-3">Give Subcategory Name</label>
-            <input type="text" class="form-control mb-3" name="subcategory_name" value="{{ $subcategory_info->subcategory_name }}" placeholder="Input">
+            <label for="subcategory" class="fw-bold mb-3">Give Subcategory Name</label>
+            <input type="text" class="form-control mb-3" name="subcategory" value="{{ $subcategory_info->subcategory }}" placeholder="Input">
             <button class="btn btn-primary">Update Subcategory</button>
         </form>
     </div>

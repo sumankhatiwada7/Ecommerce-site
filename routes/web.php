@@ -82,10 +82,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
   Route::controller(mainsubcategories::class)->group(function () {
             Route::post('/subcategory', 'store')->name('admin.mainsubcategory.store');
            
-
-            
-           
-
+            Route::get('/subcategory/{id}/edit', 'edit')->name('admin.mainsubcategory.edit');
+            Route::put('/subcategory/{id}', 'update')->name('admin.mainsubcategory.update');
+            Route::delete('/subcategory/{id}', 'delete')->name('admin.mainsubcategory.delete');
 
 });
 
