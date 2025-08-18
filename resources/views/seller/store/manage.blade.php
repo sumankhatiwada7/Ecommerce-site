@@ -30,9 +30,9 @@ Manage stores - Seller Panel
                     <td>{{ $store->slug }}</td>
                     <td>
                         <!-- Edit Button -->
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('seller.store.edit', $store->id) }}" class="btn btn-primary">Edit</a>
                         <!-- Delete Button -->
-                        <form action="" method="POST" style="display:inline;">
+                        <form action="{{ route('seller.store.delete', $store->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
