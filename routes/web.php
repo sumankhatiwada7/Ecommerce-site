@@ -116,6 +116,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function ()
                 Route::get('/store/create','create')->name('seller.store.create');
                 Route::get('/store/manage','manage')->name('seller.store.manage');
                 Route::post('/store/publish','publish')->name('seller.store.publish');
+                Route::get('/store/{id}/edit', 'edit')->name('seller.store.edit');
+                Route::put('/store/{id}', 'update')->name('seller.store.update');
+                Route::delete('/store/{id}', 'delete')->name('seller.store.delete');
           });
         });
    });
