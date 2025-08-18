@@ -115,6 +115,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function ()
            Route::controller(sellerstorecontroller::class)->group(function () {
                 Route::get('/store/create','create')->name('seller.store.create');
                 Route::get('/store/manage','manage')->name('seller.store.manage');
+                Route::post('/store/publish','publish')->name('seller.store.publish');
           });
         });
    });
