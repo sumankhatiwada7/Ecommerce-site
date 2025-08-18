@@ -15,6 +15,7 @@ use App\Http\Controllers\seller\sellerordercontroller;
 use App\Http\Controllers\customer\customermaincontroller;
 use App\Http\Controllers\maincatgorycontroller;
 use App\Http\Controllers\mainsubcategories;
+use App\Http\Controllers\productattribute;
 
 Route::get('/', function () {
     return view('welcome');
@@ -85,6 +86,14 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::get('/subcategory/{id}/edit', 'edit')->name('admin.mainsubcategory.edit');
             Route::put('/subcategory/{id}', 'update')->name('admin.mainsubcategory.update');
             Route::delete('/subcategory/{id}', 'delete')->name('admin.mainsubcategory.delete');
+
+});
+
+ Route::controller(productattribute::class)->group(function () {
+            Route::post('/productattributes', 'create')->name('admin.productattribute.create');
+            Route::get('/productattributes/{id}/edit', 'edit')->name('admin.productattribute.edit');
+            Route::put('/productattributes/{id}', 'update')->name('admin.productattribute.update');
+            Route::delete('/productattributes/{id}', 'delete')->name('admin.productattribute.delete');
 
 });
 

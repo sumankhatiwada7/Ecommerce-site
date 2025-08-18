@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Deafultattribute;
 
 class productattributescontroller extends Controller
 {
@@ -13,7 +14,9 @@ class productattributescontroller extends Controller
     }
 
     public function manage()
+
     {
-        return view('admin.product_attributes.manage');
+        $attributes = Deafultattribute::all();
+        return view('admin.product_attributes.manage', compact('attributes'));
     }
 }
