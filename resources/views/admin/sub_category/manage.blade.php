@@ -18,24 +18,25 @@ Create Subcategory - Admin Panel
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Category</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($subcategory as $subcategory)
+                @foreach($subcategories as $subcategory)
                 <tr>
                     <td>{{ $subcategory->id }}</td>
-                    <td>{{ $subcategory->subcategory_name }}</td>
+                    <td>{{ $subcategory->subcategory }}</td>
+                    <td>{{ $subcategory->category->category_name }}</td>
                     <td>
                         <!-- Edit Button -->
-                        <a href="{{ route('admin.subcategory.edit', $subcategory->id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.mainsubcategory.edit', $subcategory->id) }}" class="btn btn-primary">Edit</a>
                         <!-- Delete Button -->
-                        <form action="{{ route('admin.subcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.mainsubcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
-                    </td>
                 </tr>
                 @endforeach
             </tbody>

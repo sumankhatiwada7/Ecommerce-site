@@ -6,7 +6,7 @@ Edit category - Admin Panel
 
 @section('admin_layout')
 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-    {{ __('Edit SubCategory Page') }}
+    {{ __('Edit Category Page') }}
 </h2>
 <div class="card">
     <div class="card-header">
@@ -27,12 +27,12 @@ Edit category - Admin Panel
             {{ session('message') }}
         </div>
         @endif
-        <form action="{{ route('admin.mainsubcategory.update', $subcategory_info->id) }}" method="POST">
+        <form action="{{ route('admin.productattribute.update', $attribute->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <label for="subcategory" class="fw-bold mb-3">Give Subcategory Name</label>
-            <input type="text" class="form-control mb-3" name="subcategory" value="{{ $subcategory_info->subcategory }}" placeholder="Input">
-            <button class="btn btn-primary">Update Subcategory</button>
+            <label for="attribute_value" class="fw-bold mb-3">Give Attribute Value</label>
+            <input type="text" class="form-control mb-3" name="attribute_value" value="{{ $attribute->attribute_value }}" placeholder="Input">
+            <button class="btn btn-primary">Update Attribute</button>
         </form>
     </div>
 </div>

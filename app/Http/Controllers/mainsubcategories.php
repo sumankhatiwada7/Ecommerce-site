@@ -19,6 +19,26 @@ class mainsubcategories extends Controller
 
         return redirect()->route('admin.subcategory.create')->with('success', 'Subcategory created successfully.');
     }
-   
- 
+    
+    public function edit ($id)
+    {
+        $subcategory_info = subcatrgory::findOrFail($id);
+        return view('admin.sub_category.edit', compact('subcategory_info'));
+    }
+     
+    public function update(Request $request,$id){
+        $subcategory_info=subcatrgory::findOrfail($id);
+        $validatedData = $request->validate([
+            'subcategory' => 'required|string|max:255|unique:subcategories,subcategory',
+        ]);
+        $subcategory_info->update($validatedData);
+        return redirect()->back()->with('message', 'Subcategory updated successfully!');
+
+    }
+    public function delete($id){
+        $subcategory_info=subcatrgory::findOrfail($id);
+        $subcategory_info->delete();
+        return redirect()->back()->with('message', 'Subcategory deleted successfully!');
+    }
+
 }
