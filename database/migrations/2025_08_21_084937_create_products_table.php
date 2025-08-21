@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('stock_quantity')->default(0);
             $table->enum('stock_status',['instock','outofstock'])->default('instock');
             $table->boolean('visibility')->default(false);
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->string("meta_title")->nullable();
             $table->string("meta_description")->nullable();
             $table->enum('status',['published','draft'])->default('draft');
