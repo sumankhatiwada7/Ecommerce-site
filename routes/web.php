@@ -17,9 +17,9 @@ use App\Http\Controllers\maincatgorycontroller;
 use App\Http\Controllers\mainsubcategories;
 use App\Http\Controllers\productattribute;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Livewire\HomepageComponent;
+
+Route::get('/', HomepageComponent::class)->name('homepage');
 
 // Main dashboard route with role-based redirection
 Route::get('/dashboard', function () {
